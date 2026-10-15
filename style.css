@@ -48,7 +48,7 @@ button { cursor: pointer; border: none; background: none; }
 .menu-toggle { display: none; flex-direction: column; gap: 5px; width: 24px; }
 .menu-toggle .bar { width: 100%; height: 2px; background-color: var(--green); transition: var(--transition); }
 
-/* ---------------- Dynamic Hero ---------------- */
+/* ---------------- Hero & Slideshow ---------------- */
 .hero { position: relative; display: grid; grid-template-columns: 1fr 1.05fr; gap: 5%; padding: 80px 8% 100px; background: radial-gradient(circle at 10% 20%, var(--gold-bg) 0%, var(--paper) 100%); min-height: 650px; align-items: center; overflow: hidden;}
 .hero-copy { max-width: 530px; }
 .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
@@ -83,14 +83,14 @@ button { cursor: pointer; border: none; background: none; }
 
 .hero-art-v2 { position: relative; width: 100%; height: 520px; }
 
-/* Dynamic Slideshow CSS */
-.slideshow-container { position: relative; width: 100%; height: 500px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); border: 2px solid white;}
+/* Slideshow Container */
+.slideshow-container { position: relative; width: 100%; height: 500px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); border: 2px solid white; background: #eee;}
 .hero-slide { display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
-.hero-slide img { width: 100%; height: 100%; object-fit: cover; }
+.hero-slide img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .hero-slide .overlay-brand { position: absolute; bottom: 25px; left: 25px; font-family: var(--serif); font-size: 13px; font-weight: 700; letter-spacing: 4px; color: white; background: rgba(13, 43, 36, 0.7); backdrop-filter: blur(5px); padding: 10px 20px; border-radius: 30px; }
 
-.fade { animation-name: slideFade; animation-duration: 1.5s; }
-@keyframes slideFade { from { opacity: 0.6; transform: scale(1.02); } to { opacity: 1; transform: scale(1); } }
+.fade { animation-name: slideFade; animation-duration: 1.2s; }
+@keyframes slideFade { from { opacity: 0.4; } to { opacity: 1; } }
 
 .floating-badge-v2 { position: absolute; right: -30px; top: 15%; width: 110px; height: 110px; z-index: 5; background: var(--paper); border-radius: 50%; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: grid; place-items: center; }
 .spinning-text { width: 100%; height: 100%; animation: rotation 15s linear infinite; fill: var(--green); font-size: 9px; font-weight: 700; letter-spacing: 1px; }
@@ -136,7 +136,6 @@ button { cursor: pointer; border: none; background: none; }
 
 .product-placeholder {position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;background:linear-gradient(145deg,var(--tone1),var(--tone2));color:#fff}
 .product-placeholder .shirt-shape {font-size:94px;filter:drop-shadow(0 12px 10px #0002);line-height:1}
-.product-visual img.product-photo[src]:not([src=""]){position:relative}
 
 .product-info { padding: 20px 5px 0; }
 .product-meta { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
