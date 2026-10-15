@@ -1,6 +1,6 @@
 document.title = "অসীমতক | Oshimtok — Online Fashion Store";
 
-// পণ্য তালিকা
+// আপনার কালেকশনের পণ্যসমূহ (ছবি ও দাম সহ)
 const products = [
   {id:1,name:"Mint Floral Suit",description:"মিন্ট সবুজে রঙিন ফ্লোরাল প্রিন্টের আকর্ষণীয় থ্রি-পিস।",price:1500,salePrice:1275,code:"OSH · 01",image:"assets/product-01-model.jpg",detailImage:"assets/product-01-detail.jpg",emoji:"👗",tone1:"#d9dfcc",tone2:"#899c7e"},
   {id:2,name:"Black Rose Suit",description:"ব্ল্যাক বেস, রোজ প্রিন্ট ও কনট্রাস্ট ডিজাইনের এলিগ্যান্ট সেট।",price:1500,salePrice:1275,code:"OSH · 02",image:"assets/product-02-model.jpg",detailImage:"assets/product-02-detail.jpg",emoji:"👚",tone1:"#e5d4c7",tone2:"#b88977"},
@@ -56,7 +56,7 @@ mainNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
   bars[2].style.transform = 'none';
 }));
 
-// Render Products to HTML with Modal triggers
+// Render Products
 function renderProducts(){
   const sort = document.getElementById("sortSelect").value;
   let list = [...products];
@@ -170,7 +170,7 @@ function showToast(message){
   toastTimer = setTimeout(() => el.classList.remove("show"), 2500);
 }
 
-// Event Listeners for Checkout and Forms
+// Events
 document.getElementById("sortSelect").addEventListener("change", renderProducts);
 document.getElementById("cartOpen").addEventListener("click", openCart);
 document.getElementById("cartClose").addEventListener("click", closeCart);
@@ -201,7 +201,7 @@ document.getElementById("messageForm").addEventListener("submit", e => {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Product Details Modal Logic
+// Product Details Modal (Quick View) Logic
 const modalOverlay = document.getElementById("modalOverlay");
 const productModal = document.getElementById("productModal");
 const modalContent = document.getElementById("modalContent");
@@ -252,7 +252,24 @@ function closeProductModal() {
 closeModalBtn.addEventListener("click", closeProductModal);
 modalOverlay.addEventListener("click", closeProductModal);
 
-// Initialize Page
+// Auto Dynamic Slideshow Logic
+let slideIndex = 0;
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("hero-slide");
+  if (slides.length === 0) return;
+  
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  slides[slideIndex-1].style.display = "block";  
+  setTimeout(showSlides, 3500); // Change image every 3.5 seconds
+}
+
+// Initialize Everything
 renderProducts();
 renderMessageProducts();
 renderCart();
+showSlides();
