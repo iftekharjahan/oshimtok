@@ -1,6 +1,6 @@
 document.title = "অসীমতক | Oshimtok — Online Fashion Store";
 
-// সহজে পরিবর্তনযোগ্য পণ্য তালিকা: নাম, বিবরণ ও ছবির URL এখানে আপডেট করুন।
+// পণ্য তালিকা
 const products = [
   {id:1,name:"Mint Floral Suit",description:"মিন্ট সবুজে রঙিন ফ্লোরাল প্রিন্টের আকর্ষণীয় থ্রি-পিস।",price:1500,salePrice:1275,code:"OSH · 01",image:"assets/product-01-model.jpg",detailImage:"assets/product-01-detail.jpg",emoji:"👗",tone1:"#d9dfcc",tone2:"#899c7e"},
   {id:2,name:"Black Rose Suit",description:"ব্ল্যাক বেস, রোজ প্রিন্ট ও কনট্রাস্ট ডিজাইনের এলিগ্যান্ট সেট।",price:1500,salePrice:1275,code:"OSH · 02",image:"assets/product-02-model.jpg",detailImage:"assets/product-02-detail.jpg",emoji:"👚",tone1:"#e5d4c7",tone2:"#b88977"},
@@ -56,6 +56,7 @@ mainNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
   bars[2].style.transform = 'none';
 }));
 
+// Render Products to HTML with Modal triggers
 function renderProducts(){
   const sort = document.getElementById("sortSelect").value;
   let list = [...products];
@@ -64,15 +65,15 @@ function renderProducts(){
   
   grid.innerHTML = list.map((p) => `
     <article class="product-card">
-      <div class="product-visual">
+      <div class="product-visual" onclick="openProductModal(${p.id})" style="cursor: pointer;" title="বিস্তারিত দেখতে ক্লিক করুন">
         <span class="discount-badge">১৫% ছাড়</span>
         <div class="product-placeholder" style="--tone1:${p.tone1};--tone2:${p.tone2}">
           <span class="shirt-shape">${p.emoji}</span><small>CURATED STYLE · 0${p.id}</small>
         </div>
         ${p.image ? `<img class="product-photo" src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'"><img class="product-detail-photo" src="${p.detailImage}" alt="${p.name} Detail" loading="lazy" onerror="this.style.display='none'">` : ""}
-        <button class="quick-add" data-add="${p.id}">＋ ব্যাগে যোগ করুন</button>
+        <button class="quick-add" onclick="event.stopPropagation(); addToCart(${p.id})">＋ ব্যাগে যোগ করুন</button>
       </div>
-      <div class="product-info">
+      <div class="product-info" onclick="openProductModal(${p.id})" style="cursor: pointer;">
         <div class="product-meta"><h3>${p.name}</h3><span class="product-code">${p.code}</span></div>
         <p class="product-desc">${p.description}</p>
         <div class="price-row">
@@ -82,10 +83,6 @@ function renderProducts(){
         </div>
       </div>
     </article>`).join("");
-    
-  grid.querySelectorAll("[data-add]").forEach(btn => 
-    btn.addEventListener("click", () => addToCart(Number(btn.dataset.add)))
-  );
 }
 
 function renderMessageProducts(){
@@ -98,6 +95,7 @@ function renderMessageProducts(){
   });
 }
 
+// Cart Functions
 function addToCart(id){
   cart.set(id, (cart.get(id) || 0) + 1); 
   renderCart(); 
@@ -172,6 +170,7 @@ function showToast(message){
   toastTimer = setTimeout(() => el.classList.remove("show"), 2500);
 }
 
+// Event Listeners for Checkout and Forms
 document.getElementById("sortSelect").addEventListener("change", renderProducts);
 document.getElementById("cartOpen").addEventListener("click", openCart);
 document.getElementById("cartClose").addEventListener("click", closeCart);
@@ -202,7 +201,58 @@ document.getElementById("messageForm").addEventListener("submit", e => {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Initialize
+// Product Details Modal Logic
+const modalOverlay = document.getElementById("modalOverlay");
+const productModal = document.getElementById("productModal");
+const modalContent = document.getElementById("modalContent");
+const closeModalBtn = document.getElementById("closeModalBtn");
+
+function openProductModal(id) {
+  const p = products.find(x => x.id === id);
+  if(!p) return;
+  
+  modalContent.innerHTML = `
+    <div class="modal-gallery">
+      <img src="${p.image}" alt="${p.name} Model View">
+      <img src="${p.detailImage}" alt="${p.name} Fabric Detail">
+    </div>
+    <div class="modal-info">
+      <h2>${p.name}</h2>
+      <span class="product-code">${p.code} | PREMIUM THREE-PIECE</span>
+      <div class="price-row" style="margin-bottom: 10px;">
+        <span class="sale-price" style="font-size: 26px;">${money(p.salePrice)}</span>
+        <span class="old-price" style="font-size: 16px;">${money(p.price)}</span>
+        <span class="discount-badge" style="position: static; margin-left: 15px;">১৫% ছাড়</span>
+      </div>
+      <p class="product-desc">${p.description} <br><br> উন্নতমানের কাপড় এবং আরামদায়ক ফিটিং। প্রতিদিনের ব্যবহারের জন্য পারফেক্ট।</p>
+      
+      <ul class="modal-features">
+        <li><span>✦</span> ১০০% অরিজিনাল কোয়ালিটি</li>
+        <li><span>✦</span> সাইজ কাস্টমাইজেশন এভেইলেবল</li>
+        <li><span>✦</span> দেশব্যাপী হোম ডেলিভারি সুবিধা</li>
+      </ul>
+
+      <button class="btn btn-dark btn-full" style="margin-top: 25px; padding: 18px;" onclick="addToCart(${p.id}); closeProductModal();">
+        ＋ ব্যাগে যোগ করুন
+      </button>
+    </div>
+  `;
+  
+  modalOverlay.classList.add("active");
+  productModal.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeProductModal() {
+  modalOverlay.classList.remove("active");
+  productModal.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+closeModalBtn.addEventListener("click", closeProductModal);
+modalOverlay.addEventListener("click", closeProductModal);
+
+// Initialize Page
 renderProducts();
 renderMessageProducts();
 renderCart();
