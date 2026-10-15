@@ -18,18 +18,8 @@
 
   <header class="site-header">
     <a class="brand" href="#home" aria-label="হোম">
-      <!-- নতুন প্রফেশনাল জ্যামিতিক ফ্লোরাল লোগো -->
-      <div class="brand-logo">
-        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="2"/>
-          <circle cx="50" cy="50" r="38" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2"/>
-          <path d="M50 15 C55 35, 65 45, 85 50 C65 55, 55 65, 50 85 C45 65, 35 55, 15 50 C35 45, 45 35, 50 15 Z" fill="currentColor" opacity="0.15"/>
-          <path d="M50 15 C55 35, 65 45, 85 50 C65 55, 55 65, 50 85 C45 65, 35 55, 15 50 C35 45, 45 35, 50 15 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          <circle cx="50" cy="50" r="6" fill="currentColor"/>
-          <path d="M28 28 L72 72 M28 72 L72 28" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-        </svg>
-      </div>
-      <span><b id="brandName">অসীমতক</b><small>OSHIMTOK · STYLE THAT SPEAKS</small></span>
+      <!-- আপনার দেওয়া অরিজিনাল লোগো -->
+      <img src="assets/logo.jpg" alt="অসীমতক লোগো" class="real-brand-logo">
     </a>
     <button class="menu-toggle" id="menuToggle" aria-label="মেনু খুলুন" aria-expanded="false">
       <span class="bar"></span>
@@ -49,7 +39,6 @@
   </header>
 
   <main>
-    <!-- Dynamic Hero Section -->
     <section class="hero" id="home">
       <div class="hero-copy animate-fade-in">
         <p class="eyebrow"><span></span> THE NEW EDIT · 2026</p>
@@ -65,7 +54,6 @@
         </div>
       </div>
       
-      <!-- Interactive Multi-layered Image Gallery -->
       <div class="hero-art-v2">
         <div class="hero-gallery-wrap">
           <div class="image-card card-primary">
@@ -74,7 +62,6 @@
             <div class="overlay-brand">OSHIMTOK</div>
           </div>
           <div class="image-card card-secondary">
-            <!-- Secondary overlapping natural shot to create dynamic dimension -->
             <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600&q=85" alt="প্রাকৃতিক আলোতে পোশাকের ক্লোজ-আপ" onerror="this.style.display='none'">
           </div>
         </div>
@@ -90,7 +77,6 @@
       <div class="hero-bottom-line"><span>THOUGHTFULLY SELECTED</span><span>01 — 06</span></div>
     </section>
 
-    <!-- বাকি অংশ আগের মতোই থাকবে, নতুন ডিজাইনটি CSS এবং লোগো পরিবর্তন দ্বারা পরিচালিত হবে -->
     <section class="benefits" aria-label="আমাদের সুবিধা">
       <div><span class="benefit-icon">✦</span><span><b>যত্নে বাছাই করা</b><small>স্টাইলিশ কালেকশন</small></span></div>
       <div><span class="benefit-icon">৳</span><span><b>বিশেষ ছাড়</b><small>এখন ১৫% সাশ্রয়</small></span></div>
@@ -135,18 +121,10 @@
   </main>
 
   <footer class="site-footer">
-    <!-- Footer Logo পরিবর্তিত -->
     <div class="footer-top">
       <a class="brand brand-footer" href="#home">
-        <div class="brand-logo footer-logo">
-          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="2"/>
-            <path d="M50 15 C55 35, 65 45, 85 50 C65 55, 55 65, 50 85 C45 65, 35 55, 15 50 C35 45, 45 35, 50 15 Z" fill="currentColor" opacity="0.3"/>
-            <path d="M50 15 C55 35, 65 45, 85 50 C65 55, 55 65, 50 85 C45 65, 35 55, 15 50 C35 45, 45 35, 50 15 Z" stroke="currentColor" stroke-width="2"/>
-            <circle cx="50" cy="50" r="6" fill="currentColor"/>
-          </svg>
-        </div>
-        <span><b>অসীমতক</b><small>OSHIMTOK · STYLE THAT SPEAKS</small></span>
+        <!-- আপনার দেওয়া অরিজিনাল লোগো ফুটারে -->
+        <img src="assets/logo.jpg" alt="অসীমতক লোগো" class="real-brand-logo footer-logo-img">
       </a>
       <p>নিজের মতো করে সাজুন।<br>ফেনী, বাংলাদেশ থেকে ভালোবাসাসহ।</p>
       <a class="footer-contact" href="tel:+8801971936771">01971-936771 ↗</a>
@@ -154,7 +132,6 @@
     <div class="footer-bottom"><span>© <span id="year"></span> অসীমতক (Oshimtok)। সর্বস্বত্ব সংরক্ষিত।</span><div><a href="#collection">শপ</a><a href="#about">আমাদের সম্পর্কে</a><a href="#contact">যোগাযোগ</a></div><span>Designed with care ✳</span></div>
   </footer>
 
-  <!-- Drawer & Toasts (বাকি অংশ আগের মতোই) -->
   <div class="cart-overlay" id="cartOverlay"></div>
   <aside class="cart-drawer" id="cartDrawer" aria-label="শপিং ব্যাগ" aria-hidden="true">
     <div class="cart-head"><div><p class="eyebrow">YOUR SELECTION</p><h3>আপনার ব্যাগ <span id="drawerCount">(0)</span></h3></div><button id="cartClose" class="close-button" aria-label="বন্ধ করুন">×</button></div>
