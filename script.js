@@ -1,6 +1,5 @@
 document.title = "অসীমতক | Oshimtok — Online Fashion Store";
 
-// আপনার কালেকশনের পণ্যসমূহ (ছবি ও দাম সহ)
 const products = [
   {id:1,name:"Mint Floral Suit",description:"মিন্ট সবুজে রঙিন ফ্লোরাল প্রিন্টের আকর্ষণীয় থ্রি-পিস।",price:1500,salePrice:1275,code:"OSH · 01",image:"assets/product-01-model.jpg",detailImage:"assets/product-01-detail.jpg",emoji:"👗",tone1:"#d9dfcc",tone2:"#899c7e"},
   {id:2,name:"Black Rose Suit",description:"ব্ল্যাক বেস, রোজ প্রিন্ট ও কনট্রাস্ট ডিজাইনের এলিগ্যান্ট সেট।",price:1500,salePrice:1275,code:"OSH · 02",image:"assets/product-02-model.jpg",detailImage:"assets/product-02-detail.jpg",emoji:"👚",tone1:"#e5d4c7",tone2:"#b88977"},
@@ -15,7 +14,6 @@ const grid = document.getElementById("productGrid");
 const cart = new Map();
 let toastTimer;
 
-// Dynamic Navbar Scroll Effect
 document.addEventListener('scroll', () => {
   const header = document.querySelector('.site-header');
   if (window.scrollY > 50) {
@@ -27,7 +25,6 @@ document.addEventListener('scroll', () => {
   }
 });
 
-// Menu Toggle Action with Animations
 const menuToggle = document.getElementById("menuToggle");
 const mainNav = document.getElementById("mainNav");
 
@@ -56,7 +53,6 @@ mainNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
   bars[2].style.transform = 'none';
 }));
 
-// Render Products
 function renderProducts(){
   const sort = document.getElementById("sortSelect").value;
   let list = [...products];
@@ -95,7 +91,6 @@ function renderMessageProducts(){
   });
 }
 
-// Cart Functions
 function addToCart(id){
   cart.set(id, (cart.get(id) || 0) + 1); 
   renderCart(); 
@@ -170,7 +165,6 @@ function showToast(message){
   toastTimer = setTimeout(() => el.classList.remove("show"), 2500);
 }
 
-// Events
 document.getElementById("sortSelect").addEventListener("change", renderProducts);
 document.getElementById("cartOpen").addEventListener("click", openCart);
 document.getElementById("cartClose").addEventListener("click", closeCart);
@@ -201,7 +195,6 @@ document.getElementById("messageForm").addEventListener("submit", e => {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Product Details Modal (Quick View) Logic
 const modalOverlay = document.getElementById("modalOverlay");
 const productModal = document.getElementById("productModal");
 const modalContent = document.getElementById("modalContent");
@@ -252,7 +245,7 @@ function closeProductModal() {
 closeModalBtn.addEventListener("click", closeProductModal);
 modalOverlay.addEventListener("click", closeProductModal);
 
-// Auto Dynamic Slideshow Logic
+// Auto Slideshow using assets product images
 let slideIndex = 0;
 function showSlides() {
   let i;
@@ -265,10 +258,9 @@ function showSlides() {
   slideIndex++;
   if (slideIndex > slides.length) {slideIndex = 1}    
   slides[slideIndex-1].style.display = "block";  
-  setTimeout(showSlides, 3500); // Change image every 3.5 seconds
+  setTimeout(showSlides, 3500);
 }
 
-// Initialize Everything
 renderProducts();
 renderMessageProducts();
 renderCart();
