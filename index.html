@@ -18,7 +18,7 @@
 
   <header class="site-header">
     <a class="brand" href="#home" aria-label="হোম">
-      <img src="assets/logo.jpg" alt="অসীমতক লোগো" class="real-brand-logo">
+      <img src="assets/logo.jpg" alt="অসীমতক লোগো" class="real-brand-logo" onerror="this.src='assets/logo.png'">
     </a>
     <button class="menu-toggle" id="menuToggle" aria-label="মেনু খুলুন" aria-expanded="false">
       <span class="bar"></span>
@@ -54,9 +54,8 @@
       </div>
       
       <div class="hero-art-v2">
-        <!-- assets ফোল্ডারের প্রোডাক্ট ইমেজ দিয়ে স্লাইডশো -->
         <div class="slideshow-container" id="heroSlideshow">
-          <div class="hero-slide fade">
+          <div class="hero-slide fade" style="display: block;">
             <img src="assets/product-01-model.jpg" alt="Mint Floral Suit">
             <div class="overlay-brand">OSHIMTOK · 01</div>
           </div>
@@ -143,7 +142,7 @@
   <footer class="site-footer">
     <div class="footer-top">
       <a class="brand brand-footer" href="#home">
-        <img src="assets/logo.jpg" alt="অসীমতক লোগো" class="real-brand-logo footer-logo-img">
+        <img src="assets/logo.jpg" alt="অসীমতক লোগো" class="real-brand-logo footer-logo-img" onerror="this.src='assets/logo.png'">
       </a>
       <p>নিজের মতো করে সাজুন।<br>ফেনী, বাংলাদেশ থেকে ভালোবাসাসহ।</p>
       <a class="footer-contact" href="tel:+8801971936771">01971-936771 ↗</a>
@@ -160,7 +159,6 @@
   
   <div class="toast" id="toast" role="status"></div>
 
-  <!-- Product Details Modal (Quick View) -->
   <div class="modal-overlay" id="modalOverlay"></div>
   <div class="product-modal" id="productModal">
     <button class="close-modal" id="closeModalBtn">×</button>
