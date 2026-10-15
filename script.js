@@ -245,7 +245,7 @@ function closeProductModal() {
 closeModalBtn.addEventListener("click", closeProductModal);
 modalOverlay.addEventListener("click", closeProductModal);
 
-// Robust Automatic Slideshow
+// Auto Slideshow
 let slideIndex = 0;
 function showSlides() {
   let slides = document.getElementsByClassName("hero-slide");
