@@ -53,8 +53,12 @@ button { cursor: pointer; border: none; background: none; }
 .hero-copy { max-width: 530px; }
 .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
 .eyebrow span { width: 24px; height: 1px; background: var(--gold); display: inline-block; }
-.hero h1, .section-heading h2, .about-copy h2, .contact-copy h2 { font-size: clamp(38px, 4.4vw, 68px); line-height: 1.1; font-weight: 700; letter-spacing: -1.5px; margin: 0 0 24px; }
-.hero h1 em, .section-heading h2 em, .about-copy h2 em, .contact-copy h2 em { font-family: var(--serif); font-weight: 400; font-style: italic; color: var(--gold); }
+
+.pro-title { font-family: var(--serif); font-size: clamp(40px, 5vw, 70px); font-weight: 700; line-height: 1.1; margin: 0 0 20px; color: var(--green); letter-spacing: -1px; }
+.hero-highlight { color: var(--gold); font-weight: 700; }
+
+.section-heading h2, .about-copy h2, .contact-copy h2 { font-size: clamp(38px, 4.4vw, 68px); line-height: 1.1; font-weight: 700; letter-spacing: -1.5px; margin: 0 0 24px; }
+.section-heading h2 em, .about-copy h2 em, .contact-copy h2 em { font-family: var(--serif); font-weight: 400; font-style: italic; color: var(--gold); }
 .hero-description { font-size: 16px; line-height: 1.8; color: var(--muted); margin-bottom: 35px; max-width: 450px;}
 .hero-actions { display: flex; align-items: center; gap: 30px; }
 
@@ -78,14 +82,15 @@ button { cursor: pointer; border: none; background: none; }
 .hero-proof small { color: var(--muted); font-size: 10px; }
 
 .hero-art-v2 { position: relative; width: 100%; height: 520px; }
-.hero-gallery-wrap { position: relative; width: 100%; height: 100%; }
-.image-card { position: absolute; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.12); border-radius: 12px; transition: var(--transition); background: #eee;}
-.image-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
-.card-primary { width: 75%; height: 440px; top: 0; left: 0; z-index: 2; border: 1px solid rgba(255,255,255,0.2); }
-.card-primary:hover img { transform: scale(1.05); }
-.overlay-brand { position: absolute; bottom: 25px; left: 25px; font-family: var(--serif); font-size: 12px; font-weight: 600; letter-spacing: 4px; color: white; background: rgba(13, 43, 36, 0.6); backdrop-filter: blur(5px); padding: 8px 16px; border-radius: 30px; }
-.card-secondary { width: 50%; height: 300px; right: 0; bottom: 10px; z-index: 3; border: 4px solid var(--paper); }
-.card-secondary:hover { transform: scale(1.05) translateY(-10px); z-index: 4; }
+
+/* Dynamic Slideshow CSS */
+.slideshow-container { position: relative; width: 100%; height: 500px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); border: 2px solid white;}
+.hero-slide { display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+.hero-slide img { width: 100%; height: 100%; object-fit: cover; }
+.hero-slide .overlay-brand { position: absolute; bottom: 25px; left: 25px; font-family: var(--serif); font-size: 13px; font-weight: 700; letter-spacing: 4px; color: white; background: rgba(13, 43, 36, 0.7); backdrop-filter: blur(5px); padding: 10px 20px; border-radius: 30px; }
+
+.fade { animation-name: slideFade; animation-duration: 1.5s; }
+@keyframes slideFade { from { opacity: 0.6; transform: scale(1.02); } to { opacity: 1; transform: scale(1); } }
 
 .floating-badge-v2 { position: absolute; right: -30px; top: 15%; width: 110px; height: 110px; z-index: 5; background: var(--paper); border-radius: 50%; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: grid; place-items: center; }
 .spinning-text { width: 100%; height: 100%; animation: rotation 15s linear infinite; fill: var(--green); font-size: 9px; font-weight: 700; letter-spacing: 1px; }
@@ -94,8 +99,6 @@ button { cursor: pointer; border: none; background: none; }
 
 .vertical-label { position: absolute; right: -40px; bottom: 80px; writing-mode: vertical-rl; font-size: 10px; letter-spacing: 4px; font-weight: 700; color: var(--muted); opacity: 0.6; }
 .hero-bottom-line { position: absolute; bottom: 25px; left: 8%; right: 8%; display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; letter-spacing: 2.5px; opacity: 0.7; }
-.hero-fallback {position:absolute;inset:0;background:linear-gradient(135deg,#d4d8c7,#aab79b 55%,#667d69);display:flex;flex-direction:column;justify-content:center;padding:13%;color:#fff}
-.image-card:has(img:not([src=""])) .hero-fallback {z-index:-1}
 
 /* ---------------- Benefits Bar ---------------- */
 .benefits { display: grid; grid-template-columns: repeat(4, 1fr); padding: 40px 8%; background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -266,7 +269,7 @@ button { cursor: pointer; border: none; background: none; }
 @media(max-width:1050px) {
   .site-header { padding: 0 4%; }
   .hero { grid-template-columns: 1fr; padding-top: 50px; gap: 40px; }
-  .hero-art-v2 { height: 480px; max-width: 500px; margin: 0 auto; }
+  .slideshow-container { height: 480px; max-width: 600px; margin: 0 auto; }
   .section-pad { padding: 75px 6%; }
   .product-grid { grid-template-columns: repeat(2, 1fr); }
   .about-section { padding: 80px 7%; gap: 6%; }
@@ -284,11 +287,9 @@ button { cursor: pointer; border: none; background: none; }
   .cart-label { display: none; }
   
   .hero { padding: 40px 6% 60px; }
-  .hero h1 { font-size: 42px; }
+  .pro-title { font-size: 45px; }
   .hero-description { font-size: 14px; }
-  .hero-art-v2 { max-width: 100%; height: 380px;}
-  .card-primary { height: 320px; }
-  .card-secondary { height: 220px; width: 60%;}
+  .slideshow-container { max-width: 100%; height: 380px;}
   .floating-badge-v2 { width: 90px; height: 90px; right: -10px; top: 5%;}
   
   .benefits { grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 30px 6%;}
